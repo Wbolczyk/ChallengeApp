@@ -1,6 +1,6 @@
 ﻿string name = "Ewa";
-bool isWomen = false;
-var age = 17;
+bool isWomen = true;
+var age = 33;
 
 if (isWomen == true)
     if (age < 30)
