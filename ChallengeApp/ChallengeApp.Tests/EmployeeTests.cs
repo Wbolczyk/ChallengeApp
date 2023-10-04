@@ -3,35 +3,52 @@ namespace ChallengeApp.Tests
     public class Tests
     {
         [Test]
-        public void WhenEmployeeCollectPositiveScores_ShouldTheResult()
+        public void WhenEmployeeCollectGrades_ReturnTheMinGrade()
         {
             // arrange
-            var employee = new Employee("Wojciech", "Kowalski", 40, 0);
-            employee.AddScore(5);
-            employee.AddScore(4);
-            employee.AddScore(3);
+            var employee = new Employee("Wojciech", "Kowalski", 40);
+            employee.AddGrade(5);
+            employee.AddGrade(4);
+            employee.AddGrade(3);
 
             //act
-            var result = employee.Result;
+            var statistics = employee.GetStatistics();
 
             //assert
-            Assert.AreEqual(12, result);
+            Assert.AreEqual(3, statistics.Min);
         }
 
         [Test]
-        public void WhenEmployeeCollectNegativeScores_ShouldTheResult()
+        public void WhenEmployeeCollectGrades_ReturnTheMaxGrade()
         {
-            //arrange
-            var employee = new Employee("Aleksandra", "Nowak", 44, 0);
-            employee.AddScore(5);
-            employee.AddScore(4);
-            employee.AddScore(-6);
+            // arrange
+            var employee = new Employee("Wojciech", "Kowalski", 40);
+            employee.AddGrade(5);
+            employee.AddGrade(2);
+            employee.AddGrade(4);
 
             //act
-            var result = employee.Result;
+            var statistics = employee.GetStatistics();
 
             //assert
-            Assert.AreEqual(3, result);
-        }           
+            Assert.AreEqual(5, statistics.Max);
+        }
+
+        [Test]
+        public void WhenEmployeeCollectGrades_ReturnTheAverageResult()
+        {
+            // arrange
+            var employee = new Employee("Wojciech", "Kowalski", 40);
+            employee.AddGrade(5);
+            employee.AddGrade(4);
+            employee.AddGrade(2);
+
+            //act
+            var statistics = employee.GetStatistics();
+
+            //assert
+            Assert.AreEqual(Math.Round(3.67,2), Math.Round(statistics.Average, 2));
+        }
+
     }
 }
