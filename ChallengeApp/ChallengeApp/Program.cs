@@ -1,51 +1,47 @@
 ﻿using ChallengeApp;
 
-Employee pracownik1 = new Employee("Wojciech", "Kowalski", 40, 0);
-Employee pracownik2 = new Employee("Aleksandra", "Nowak", 44, 0);
-Employee pracownik3 = new Employee("Sławomir", "Nowak", 46, 0);
+var employee = new Employee("Wojciech", "Kowalski", 40);
 
-pracownik1.AddScore(1);
-pracownik1.AddScore(2);
-pracownik1.AddScore(3);
-pracownik1.AddScore(4);
-pracownik1.AddScore(5);
+employee.AddGrade(1);
+employee.AddGrade(2);
+employee.AddGrade("10");
+employee.AddGrade("20");
+employee.AddGrade(30);
 
-pracownik2.AddScore(3);
-pracownik2.AddScore(4);
-pracownik2.AddScore(5);
-pracownik2.AddScore(6);
-pracownik2.AddScore(7);
+var statistics = employee.GetStatisticsWithForeach();
+Console.WriteLine("Wyniki dla pętli Foreach:");
+Console.WriteLine($"Pracownik: {employee.Name} {employee.SurName}, wiek {employee.Age}");
+Console.WriteLine($"Średnia ocena pracownika: {statistics.Average:N2}");
+Console.WriteLine($"Ocena Min: {statistics.Min}");
+Console.WriteLine($"Ocena Max: {statistics.Max}");
+Console.WriteLine();
 
-pracownik3.AddScore(2);
-pracownik3.AddScore(3);
-pracownik3.AddScore(4);
-pracownik3.AddScore(5);
-pracownik3.AddScore(6);
+var statistics2 = employee.GetStatisticsWithFor();
+Console.WriteLine("Wyniki dla pętli For:");
+Console.WriteLine($"Pracownik: {employee.Name} {employee.SurName}, wiek {employee.Age}");
+Console.WriteLine($"Średnia ocena pracownika: {statistics2.Average:N2}");
+Console.WriteLine($"Ocena Min: {statistics2.Min}");
+Console.WriteLine($"Ocena Max: {statistics2.Max}");
+Console.WriteLine();
 
-var result1 = pracownik1.Result;
-var result2 = pracownik2.Result;
-var result3 = pracownik3.Result;
+var statistics3 = employee.GetStatisticsWithDoWhile();
+Console.WriteLine("Wyniki dla pętli DoWhile:");
+Console.WriteLine($"Pracownik: {employee.Name} {employee.SurName}, wiek {employee.Age}");
+Console.WriteLine($"Średnia ocena pracownika: {statistics3.Average:N2}");
+Console.WriteLine($"Ocena Min: {statistics3.Min}");
+Console.WriteLine($"Ocena Max: {statistics3.Max}");
+Console.WriteLine();
 
-Console.WriteLine("Wyniki pracowników to " + pracownik1.Name + " => " + result1 + " " + pracownik2.Name + " => " + result2
-    + " " + pracownik3.Name + " => " + result3);
+var statistics4 = employee.GetStatisticsWithWhile();
+Console.WriteLine("Wyniki dla pętli While:");
+Console.WriteLine($"Pracownik: {employee.Name} {employee.SurName}, wiek {employee.Age}");
+Console.WriteLine($"Średnia ocena pracownika: {statistics4.Average:N2}");
+Console.WriteLine($"Ocena Min: {statistics4.Min}");
+Console.WriteLine($"Ocena Max: {statistics4.Max}");
 
-List<Employee> pracownicy = new List<Employee>()
+
+SetSth(out statistics);
+void SetSth(out Statistics statistics)
 {
-pracownik1, pracownik2, pracownik3,
-};
-
-int maxResult = -1;
-Employee pracownikWithMaxResult = null;
-
-foreach (var employee in pracownicy)
-{
-    if (employee.Result > maxResult)
-    {
-        maxResult = employee.Result;
-        pracownikWithMaxResult = employee;
-    }
+    statistics = new Statistics();
 }
-
-Console.WriteLine("Najlepszy wynik ma " + pracownikWithMaxResult.Name + " "
-    + pracownikWithMaxResult.SurName + ", Wiek " + pracownikWithMaxResult.Age
-    + ", Liczba punktów " + pracownikWithMaxResult.Result);
