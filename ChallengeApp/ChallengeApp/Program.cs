@@ -14,7 +14,15 @@ while (true)
     {
         break;
     }
-    employee.AddGrade(input);
+
+    try
+    {
+        employee.AddGrade(input);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"Exception catched: {e.Message}");
+    }
 }
 
 var statistics = employee.GetStatistics();
@@ -22,7 +30,7 @@ Console.WriteLine($"Pracownik: {employee.Name} {employee.SurName}, wiek {employe
 Console.WriteLine($"Ocena Min: {statistics.Min}");
 Console.WriteLine($"Ocena Max: {statistics.Max}");
 Console.WriteLine($"Średnia ocena pracownika: {statistics.Average:N2} ==> {statistics.AverageLetter}");
-Console.WriteLine( );
+Console.WriteLine();
 
 SetSth(out statistics);
 void SetSth(out Statistics statistics)
