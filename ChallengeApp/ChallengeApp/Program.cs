@@ -4,7 +4,7 @@ Console.WriteLine("Witamy w programie XYZ do oceny pracowników");
 Console.WriteLine("===========================================");
 Console.WriteLine();
 
-var employee = new Employee("Wojciech", "Kowalski", 40);
+var employee = new Employee("Wojciech", "Kowalski", 'M', 40);
 
 while (true)
 {
@@ -26,7 +26,7 @@ while (true)
 }
 
 var statistics = employee.GetStatistics();
-Console.WriteLine($"Pracownik: {employee.Name} {employee.SurName}, wiek {employee.Age}");
+Console.WriteLine($"Pracownik: {employee.Name} {employee.Surname}, Płeć: {employee.Sex}, wiek {employee.Age}");
 Console.WriteLine($"Ocena Min: {statistics.Min}");
 Console.WriteLine($"Ocena Max: {statistics.Max}");
 Console.WriteLine($"Średnia ocena pracownika: {statistics.Average:N2} ==> {statistics.AverageLetter}");
