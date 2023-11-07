@@ -2,6 +2,7 @@
 {
     public class Supervisor : IEmployee
     {
+        private List<float>grades = new List<float>();
         public string Name => throw new NotImplementedException();
 
         public string Surname => throw new NotImplementedException();
@@ -99,7 +100,19 @@
 
         public Statistics GetStatistics()
         {
-            throw new NotImplementedException();
+            var statistics = new Statistics();
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+
+            foreach (var grade in this.grades)
+            {
+                statistics.Max = Math.Max(statistics.Max, grade);
+                statistics.Min = Math.Min(statistics.Min, grade);
+                statistics.Average = statistics.Average + grade;
+            }
+            statistics.Average = statistics.Average / this.grades.Count;
+            return statistics;
         }
     }
 }
