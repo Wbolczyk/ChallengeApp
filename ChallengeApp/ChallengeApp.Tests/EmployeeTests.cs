@@ -6,7 +6,7 @@ namespace ChallengeApp.Tests
         public void WhenEmployeeCollectGrades_ReturnTheMinGrade()
         {
             // arrange
-            var employee = new Employee("Wojciech", "Kowalski",'M', 40);
+            var employee = new EmployeeInMemory("Wojciech", "Kowalski",'M', 40);
             employee.AddGrade('a');
             employee.AddGrade("1");
             employee.AddGrade(3);
@@ -23,7 +23,7 @@ namespace ChallengeApp.Tests
         public void WhenEmployeeCollectGrades_ReturnTheMaxGrade()
         {
             // arrange
-            var employee = new Employee("Wojciech", "Kowalski", 'M', 40);
+            var employee = new EmployeeInMemory("Wojciech", "Kowalski", 'M', 40);
             employee.AddGrade('A');
             employee.AddGrade("1");
             employee.AddGrade(3);
@@ -40,7 +40,7 @@ namespace ChallengeApp.Tests
         public void WhenEmployeeCollectGrades_ReturnTheAverageResult()
         {
             // arrange
-            var employee = new Employee("Wojciech", "Kowalski",'M', 40);
+            var employee = new EmployeeInMemory("Wojciech", "Kowalski",'M', 40);
             employee.AddGrade('a');
             employee.AddGrade("17");
             employee.AddGrade(33);
@@ -58,7 +58,7 @@ namespace ChallengeApp.Tests
         public void WhenEmployeeCollectGrades_ReturnTheAverageLetterResult()
         {
             // arrange
-            var employee = new Employee("Wojciech", "Kowalski",'M', 40);
+            var employee = new EmployeeInMemory("Wojciech", "Kowalski",'M', 40);
             employee.AddGrade('a');
             employee.AddGrade("17");
             employee.AddGrade(33);
